@@ -286,10 +286,8 @@ class StreamsPointNumerator:
 
         Format: 5Pa, 5Pb, 5Pc, ... (gdzie 5 to numer poprzedniego punktu)
         """
-        for i in range(len(old_points) - 1):
-            current_old_point = old_points[i]
+        for current_old_point, next_old_point in zip(old_points, old_points[1:]):
             current_old_index = current_old_point["index"]
-            next_old_point = old_points[i + 1]
             next_old_index = next_old_point["index"]
 
             # Oblicz ile punktów jest między obecnym a następnym punktem ze starym numerem
