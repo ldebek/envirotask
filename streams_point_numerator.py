@@ -348,11 +348,8 @@ class StreamsPointNumerator:
             if not self.points_layer.startEditing():
                 raise RuntimeError("Nie udało się rozpocząć edycji warstwy punktów")
 
-            # Znajdź indeks pola "numer-nowy"
+            # Znajdź indeks pola "numer-nowy" (pole już zwalidowane w __init__)
             field_index = self.points_layer.fields().indexFromName(self.field_new_number)
-            if field_index == -1:
-                self.points_layer.rollBack()
-                raise ValueError(f"Nie znaleziono pola '{self.field_new_number}' w warstwie punktów")
 
             # Aktualizuj punkty
             for point_id, new_number in points_to_update.items():
